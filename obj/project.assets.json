@@ -7840,27 +7840,24 @@
   },
   "packageFolders": {
     "C:\\Users\\natha\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\natha\\Desktop\\LoveNottiesSite-2.2\\LoveNottiesSite-2.2\\LoveNottiesV2.2\\LoveNottiesV2\\LoveNottiesV2.csproj",
+      "projectUniqueName": "C:\\Users\\natha\\Desktop\\LoveNottiesV2\\LoveNottiesV2.csproj",
       "projectName": "LoveNottiesV2",
-      "projectPath": "C:\\Users\\natha\\Desktop\\LoveNottiesSite-2.2\\LoveNottiesSite-2.2\\LoveNottiesV2.2\\LoveNottiesV2\\LoveNottiesV2.csproj",
+      "projectPath": "C:\\Users\\natha\\Desktop\\LoveNottiesV2\\LoveNottiesV2.csproj",
       "packagesPath": "C:\\Users\\natha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\natha\\Desktop\\LoveNottiesSite-2.2\\LoveNottiesSite-2.2\\LoveNottiesV2.2\\LoveNottiesV2\\obj\\",
+      "outputPath": "C:\\Users\\natha\\Desktop\\LoveNottiesV2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\natha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
