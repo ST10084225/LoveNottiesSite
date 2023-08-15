@@ -572,3 +572,8 @@ C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\refint\LoveNottiesV2.dll
 C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\LoveNottiesV2.pdb
 C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\LoveNottiesV2.genruntimeconfig.cache
 C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\ref\LoveNottiesV2.dll
+C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\SuccessStory\Create.cshtml.g.cs
+C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\SuccessStory\Delete.cshtml.g.cs
+C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\SuccessStory\Details.cshtml.g.cs
+C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\SuccessStory\Edit.cshtml.g.cs
+C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\SuccessStory\Index.cshtml.g.cs

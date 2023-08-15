@@ -18,6 +18,7 @@ namespace LoveNottiesV2.Data
         public DbSet<Volunteer> Volunteers { get; set; }
         public DbSet<BlogItem> BlogItems { get; set; }
         public DbSet<OurPeople> OurPeoples { get; set; }
+        public DbSet<SuccessStory> successStories { get; set; }
 
 
         //Seeding --> 2 tables --categories --> onModelCreating
@@ -28,6 +29,8 @@ namespace LoveNottiesV2.Data
             modelBuilder.Entity<Volunteer>().HasKey(volunteers => new { volunteers.VolunteerID, volunteers.VolunteerName });
             modelBuilder.Entity<BlogItem>().HasKey(blogItems => new { blogItems.BlogID });
             modelBuilder.Entity<OurPeople>().HasKey(ourPeople => new { ourPeople.OurPersonID });
+            modelBuilder.Entity<SuccessStory>().HasKey(successStories => new { successStories.SuccessStoryID });
+
 
             //Farmer Seed Data 
             modelBuilder.Entity<Volunteer>().HasData(new Volunteer { VolunteerID = "1", VolunteerName = "Sivan Moodley", VolunteerCell = "0815750712" , VolunteerEmail = "sivan.moodley02@gmail.com"});
