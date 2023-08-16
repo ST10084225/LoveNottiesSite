@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sivan\\source\\repos\\LoveNottiesV2\\LoveNottiesV2.csproj": {}
+    "C:\\Users\\natha\\Desktop\\LoveNottiesV2\\LoveNottiesV2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sivan\\source\\repos\\LoveNottiesV2\\LoveNottiesV2.csproj": {
+    "C:\\Users\\natha\\Desktop\\LoveNottiesV2\\LoveNottiesV2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sivan\\source\\repos\\LoveNottiesV2\\LoveNottiesV2.csproj",
+        "projectUniqueName": "C:\\Users\\natha\\Desktop\\LoveNottiesV2\\LoveNottiesV2.csproj",
         "projectName": "LoveNottiesV2",
-        "projectPath": "C:\\Users\\sivan\\source\\repos\\LoveNottiesV2\\LoveNottiesV2.csproj",
-        "packagesPath": "C:\\Users\\sivan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sivan\\source\\repos\\LoveNottiesV2\\obj\\",
+        "projectPath": "C:\\Users\\natha\\Desktop\\LoveNottiesV2\\LoveNottiesV2.csproj",
+        "packagesPath": "C:\\Users\\natha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\natha\\Desktop\\LoveNottiesV2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\sivan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\natha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -64,6 +64,10 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
             }
           },
           "imports": [
@@ -85,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
