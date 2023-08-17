@@ -577,3 +577,7 @@ C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\SuccessStory\D
 C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\SuccessStory\Details.cshtml.g.cs
 C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\SuccessStory\Edit.cshtml.g.cs
 C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\SuccessStory\Index.cshtml.g.cs
+C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\DreamCentre\Index.cshtml.g.cs
+C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\FeedingEDC\Index.cshtml.g.cs
+C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\GetInvolved\Index.cshtml.g.cs
+C:\Users\natha\Desktop\LoveNottiesV2\obj\Debug\net5.0\Razor\Views\Recycling\Index.cshtml.g.cs
