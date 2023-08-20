@@ -24,10 +24,13 @@ namespace LoveNottiesV2.Data.Migrations
                     b.Property<string>("BlogID")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("BlogDate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BlogDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BlogImage")
+                    b.Property<string>("BlogImageID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BlogTag")
@@ -146,28 +149,28 @@ namespace LoveNottiesV2.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "c45a921a-0bf0-4a53-a17e-5fc1c78f2e00",
+                            ConcurrencyStamp = "41429312-36a9-489b-8d6f-c0fcea131da7",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "da854685-aa38-4518-8cf0-b5087976ca52",
+                            ConcurrencyStamp = "a8a0b33f-1650-4afc-9d90-8a54ade26dae",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "54b2f243-1b42-432e-9e47-33b6e7eb66d2",
+                            ConcurrencyStamp = "f993e1c3-2d66-4f9f-9d6e-00c28d12d3be",
                             Name = "Volunteer",
                             NormalizedName = "VOLUNTEER"
                         },
                         new
                         {
                             Id = "4",
-                            ConcurrencyStamp = "d6f40c82-6a91-4712-99e9-bf8c3a0e3528",
+                            ConcurrencyStamp = "5321ceff-5375-4027-8128-e9b449b04b32",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -266,15 +269,15 @@ namespace LoveNottiesV2.Data.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ab6f4e32-b815-4af3-bacd-2224c21885e1",
+                            ConcurrencyStamp = "48149c0b-b2f9-4150-8de0-c8723380b76d",
                             Email = "Manager1@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MANAGER1@GMAIL.COM",
                             NormalizedUserName = "MANAGER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEI+EsfYpgEkra/GIB3AzGhZJaIfHkgXS2lHXMTivz4ncYxUxNgvwBlKW7yOgjaUtBg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDA+CP6M03sKlx7PXqRU+JorAodXze5fM3pMYs8jfLXzkBoxakJgUqzQAPVjQMKf/Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f2d77ca2-bf2e-4120-b6ce-4029ab7c4044",
+                            SecurityStamp = "45dce777-46e6-4af3-8ad6-d956cc3af9f9",
                             TwoFactorEnabled = false,
                             UserName = "Manager1"
                         },
@@ -282,15 +285,15 @@ namespace LoveNottiesV2.Data.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "da6e99a5-413f-4b3a-9a68-6e14c3b0769f",
+                            ConcurrencyStamp = "263856bd-78fd-4da5-bc5d-56f50ccce1bc",
                             Email = "Employee1@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "EMPLOYEE1@GMAIL.COM",
                             NormalizedUserName = "EMPLOYEE1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL090ry09UETCOwMCn9uNHpc9EaiJjeD5gQNMG2N1kWQ5WvtPJFCnIc8OgTrvuzdkg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGT7fXvp/aFT76QZ4ytwrT2AInpflYpBIT/eLFBD3l95bauU8N45rw5fhFfzfg8Tkg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bbd3a4b8-de29-46bd-b3ff-ea0e6ab69fc4",
+                            SecurityStamp = "456bdd18-241c-4079-aa13-f1b68f372c34",
                             TwoFactorEnabled = false,
                             UserName = "Employee1"
                         },
@@ -298,15 +301,15 @@ namespace LoveNottiesV2.Data.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "615db859-255d-4d3e-9e70-1901a2397d97",
+                            ConcurrencyStamp = "0d9739a6-6f21-41e6-b391-d29d97c1c8d5",
                             Email = "Volunteer1@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "VOLUNTEER1@GMAIL.COM",
                             NormalizedUserName = "VOLUNTEER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAELmGHearTqlqy9AiMVZFPmdoR0Hpez1ejld7HgyLFSExP1/Jn3Z0gPJKpc06NtX1BQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAuPQwTDQLNmVzjJCa3wvoTGyB0o5Gx0wV7uvB4IJNcprnoNG0T1Dixbh9VTAfyzvQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2352c80c-e668-4af2-a5bd-00cd0bd10070",
+                            SecurityStamp = "bf1e3f8e-0ab6-4e6d-a622-acfc6ea47cf2",
                             TwoFactorEnabled = false,
                             UserName = "Volunteer1"
                         },
@@ -314,15 +317,15 @@ namespace LoveNottiesV2.Data.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8b5d1ffc-f16f-42db-ae6c-601efb64601f",
+                            ConcurrencyStamp = "a6dbb325-6e64-46c1-9d43-95bfb966116c",
                             Email = "User1@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER1@GMAIL.COM",
                             NormalizedUserName = "USER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKBOtHd/F/TEeDDwfvv/wvmbhdjY3jCNFBDJsN1qpaT0MpxrKK57j2h7T7QpUOJJcw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAelcyU3+ims9fP7Sx4Dlz5UC4fBzgGYwMz3lg18cIkTVBfnGCAoShjfdRexpBU5Jg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e6d51e10-153d-42a4-8dfb-a5e7cb84b54d",
+                            SecurityStamp = "04213bf6-c707-496c-a6be-bd0403f13481",
                             TwoFactorEnabled = false,
                             UserName = "User1"
                         });

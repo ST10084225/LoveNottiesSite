@@ -10,17 +10,30 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="BlogImage" class="control-label"></label>
-                <input asp-for="BlogImage" class="form-control" />
-                <span asp-validation-for="BlogImage" class="text-danger"></span>
+                <label asp-for="BlogTitle" class="control-label">Title</label>
+                <input asp-for="BlogTitle" class="form-control" />
+                <span asp-validation-for="BlogTitle" class="text-danger"></span>
             </div>
+
+            <div class="form-group" style="margin-top:10px">
+                <label asp-for="BlogImageFile" class="control-label">Upload Image</label>
+                <input type="file" asp-for="BlogImageFile" accept="image/*" class="form-control" />
+                <span asp-validation-for="BlogImageFile" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
-                <label asp-for="BlogDescription" class="control-label"></label>
+                <label asp-for="BlogDescription" class="control-label">Description</label>
                 <input asp-for="BlogDescription" class="form-control" />
                 <span asp-validation-for="BlogDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BlogTag" class="control-label">Tag 1</label>
+                <input asp-for="BlogTag" class="form-control" />
+                <span asp-validation-for="BlogTag" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
