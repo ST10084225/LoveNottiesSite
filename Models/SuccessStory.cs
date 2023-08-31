@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoveNottiesV2.Models
 {
@@ -11,10 +14,17 @@ namespace LoveNottiesV2.Models
         [DataType(DataType.Text)]
         public string SuccessStoryTitle { get; set; }
 
-        [DataType(DataType.ImageUrl)]
-        public string SuccessStoryImage { get; set; }
+        [DataType(DataType.Text)]
+        public string SuccessStoryImageID { get; set; }
 
         [DataType(DataType.Text)]
         public string SuccessStoryDescription { get; set; }
+
+        [NotMapped]
+        [DisplayName("Upload File")]
+        public IFormFile SuccessStoryImageFile { get; set; }
+
+        [NotMapped]
+        public byte[] SuccessStoryImageBytes { get; set; }
     }
 }

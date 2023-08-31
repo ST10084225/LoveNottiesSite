@@ -50,6 +50,8 @@ namespace LoveNottiesV2
             services.AddScoped(x => new BlobServiceClient(Configuration.GetConnectionString("AzureStorageConnection")));
             services.AddScoped<IBlobService, BlobService>();
             services.AddScoped<IBlogRepository, BlogRepository>();
+            services.AddScoped<IOurPeopleRepository, OurPeopleRepository>();
+            services.AddScoped<ISuccessStoryRepository, SuccessStoryRepository>();
 
         }
 

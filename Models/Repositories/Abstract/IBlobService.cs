@@ -7,6 +7,8 @@ namespace LoveNottiesV2.Models.Repositories.Abstract
     public enum BlobContainer
     {
         blogimages,
+        successimages,
+        ourpeopleimages,
         images,
         documents,
         publiccontent

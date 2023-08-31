@@ -1,4 +1,10 @@
 ﻿@model IEnumerable<LoveNottiesV2.Models.OurPeople>
+@using LoveNottiesV2.Models.Repositories.Abstract;
+@using LoveNottiesV2.Models.Repositories.Implemented;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IBlobService _IblobService
 
 @{
     ViewData["Title"] = "Index";
@@ -9,51 +15,37 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OurPersonFirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OurPersonLastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OurPersonTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OurPersonImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OurPersonDescription)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OurPersonFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OurPersonLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OurPersonTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OurPersonImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OurPersonDescription)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OurPersonID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OurPersonID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OurPersonID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<body>
+    <div class="box">
+        @foreach (var item in Model)
+        {
+            <div class="card text-white bg-primary mb-10" style="max-width: 20rem;">
+                <div class="card-header">
+                    @Html.DisplayFor(modelItem => item.OurPersonFirstName)
+                    @Html.Raw(" ")
+                    @Html.DisplayFor(modelItem => item.OurPersonLastName)
+                    @Html.Raw(" - ")
+                    @Html.DisplayFor(modelItem => item.OurPersonTitle)
+                </div>
+                <div class="justify-content-center">
+                    <image src="https://lovenottiesstoragetest.blob.core.windows.net/ourpeopleimages/@(item.OurPersonID)" class="d-block user-select-none coverImage" width="10px" height="10px" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle" />
+                </div>
+                <div class="card-body">
+                    <h6 class="card-body ">@Html.DisplayFor(modelItem => item.OurPersonDescription)</h6>
+
+                    <div>
+                        <a class="btn btn-light text-dark" asp-controller="OurPeople" asp-action="Details" asp-route-id="@(item.OurPersonID)">View</a>
+                    </div>
+
+                    <div>
+                        @if (SignInManager.IsSignedIn(User) & User.IsInRole("Manager"))
+                        {
+                            <a class="btn btn-outline-warning" asp-controller="OurPeople" asp-action="Edit" asp-route-id="@(item.OurPersonID)">Edit</a>
+                            <a class="btn btn-outline-danger" asp-controller="OurPeople" asp-action="Delete" asp-route-id="@(item.OurPersonID)">Delete</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>

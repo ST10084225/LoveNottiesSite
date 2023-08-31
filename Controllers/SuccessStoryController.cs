@@ -7,22 +7,29 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LoveNottiesV2.Data;
 using LoveNottiesV2.Models;
+using LoveNottiesV2.Models.Repositories.Abstract;
+using Azure.Storage.Blobs.Models;
+using System.IO;
 
 namespace LoveNottiesV2.Controllers
 {
     public class SuccessStoryController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IBlobService _IBlobService;
+        private readonly ISuccessStoryRepository _ISuccessStoryRepository;
 
-        public SuccessStoryController(ApplicationDbContext context)
+        public SuccessStoryController(ApplicationDbContext context, IBlobService IBlobService, ISuccessStoryRepository iSuccessStoryRepository)
         {
             _context = context;
+            _IBlobService = IBlobService;
+            _ISuccessStoryRepository = iSuccessStoryRepository;
         }
 
         // GET: SuccessStory
         public async Task<IActionResult> Index()
         {
-            return View(await _context.successStories.ToListAsync());
+            return View(_ISuccessStoryRepository.GetAllSuccessStories());
         }
 
         // GET: SuccessStory/Details/5
@@ -54,10 +61,39 @@ namespace LoveNottiesV2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SuccessStoryID,SuccessStoryTitle,SuccessStoryImage,SuccessStoryDescription")] SuccessStory successStory)
+        public async Task<IActionResult> Create([Bind("SuccessStoryID,SuccessStoryTitle,SuccessStoryImageID,SuccessStoryDescription," +
+            "SuccessStoryImageFile")] SuccessStory successStory)
         {
             if (ModelState.IsValid)
             {
+                //Get the most recent blog's ID, and add 1
+                var successStoryList = await _context.successStories.ToListAsync();
+                var lastStory = successStoryList.LastOrDefault();
+                if (lastStory != null)
+                {
+                    successStory.SuccessStoryID = (Convert.ToInt32(lastStory.SuccessStoryID) + 1).ToString();
+                    successStory.SuccessStoryImageID = (Convert.ToInt32(lastStory.SuccessStoryID) + 1).ToString();
+                }
+                else
+                {
+                    successStory.SuccessStoryID = "1";
+                    successStory.SuccessStoryImageID = "1";
+                }
+
+                byte[] fileByteArray;    //1st change here
+                if (successStory.SuccessStoryImageFile != null)
+                {
+                    using (var item = new MemoryStream())
+                    {
+                        successStory.SuccessStoryImageFile.CopyTo(item);
+                        fileByteArray = item.ToArray(); //2nd change here
+
+                        if (_IBlobService.DoesBlobExists(successStory.SuccessStoryImageID, BlobContainer.successimages).Result == false)
+                        {
+                            await _IBlobService.UploadFileBlobAsync(fileByteArray, successStory.SuccessStoryImageID, BlobContainer.successimages);
+                        }
+                    }
+                }
                 _context.Add(successStory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
