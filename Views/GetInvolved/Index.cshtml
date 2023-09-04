@@ -3,3 +3,178 @@
 *@
 @{
 }
+
+    @*CSS Styling -- Didn't know where to put it, wasn't sure about the bootstrap file*@
+    <style>
+        .GI-Cover{
+            text-align: center;
+        }
+
+        .GI-Maps{
+        border-radius: 5px;
+        border: 2px solid #046737;
+        padding: 10px;
+        height: 426px;
+        background-color: #65ba91;
+    }
+
+        .GI-Donate-Links{
+        border-radius: 5px;
+        border: 2px solid #046737;
+        padding: 10px;
+        height: 226px;
+        background-color: #65ba91;
+        }
+
+         .GI-Volunteer{
+        border-radius: 5px;
+        border: 2px solid #046737;
+        padding: 10px;
+        height: 276px;
+        background-color: #65ba91;
+         
+        }
+
+    .volunteerInfo{
+        border-radius: 5px;
+        border: 2px solid #046737;
+        height: 250px;
+        width: 800px;
+        padding: 10px;
+        background-color: azure;
+        float: right;
+    }
+
+
+
+
+        .centerForAll {
+            text-align: center;
+        }
+
+
+
+
+        .emMap{
+        border-radius: 5px;
+        border: 2px solid #333;       
+        background-color:azure;
+        padding-top:10px;
+        width: 400px;
+        height: 400px;
+        float:right;
+
+        
+    }
+
+    .emMap iframe {
+        border-radius: 5px;
+        width: 100%; 
+        height: 100%; 
+        border: none; 
+    }
+    .map-header{
+        border-radius: 5px;
+        border: 2px solid #333;
+        background-color: azure;
+        padding-bottom:10px;
+        padding-top:10px;
+        width: 800px;
+        height: 400px;
+        float: left;
+        }
+
+    </style>
+
+
+    @*Actual HTMl code for the Page*@
+<body>
+
+    <h1 class="centerForAll">Get Involved</h1>
+
+
+    <div class="GI-Cover" >
+       
+        <img src="LoveNottiesV2/Images/LNGI.jpg" alt="LNGI">
+
+
+    </div>
+
+    
+    <div class="GI-Maps">
+        <div class="map-header">
+            <p>Information about donation centers to go here</p>
+            <br />
+            <p>Locations with details can be populated here (Will also be shown in the embeded map as dropped pins)</p>
+            <br />
+            <ul>
+                <li>Location 1 example...</li>
+                <li>Location 2 example...</li>
+                <li>Location 3 example...</li>
+            </ul>
+        </div>
+
+        <div class="emMap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3477.521859425865!2d29.989993675527572!3d-29.35500547527793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef3f9323e175d55%3A0x16e04c900668b838!2sLove%20Notties!5e0!3m2!1sen!2sza!4v1693835417430!5m2!1sen!2sza" ></iframe>
+
+        </div>
+
+
+    </div>
+
+    <br />
+
+    <div class="GI-Donate-Links">
+
+        <p></p>
+
+    </div>
+
+    <br />
+
+    <div class="GI-Volunteer">
+
+        <div class="volunteerInfo">
+            <p>Voulteer Information</p>
+            <p>Support Local Community</p>
+            <p>Information regaring voluteering will be displayed here</p>
+        </div>
+
+        <div>
+        <form>
+            <div>
+                <input type="text" id="name" name="name" required placeholder="First Name">
+            </div>
+            <br/>
+            <div>
+                <input type="text" id="surname" name="surname" required placeholder="Surname">
+            </div>
+            <br />
+            <div>
+                <input type="email" id="email" name="email" required placeholder="Email">
+            </div>
+            <br />
+            <div>
+                <input type="tel" id="cell" name="cell" required placeholder=" Cell Number">
+            </div>
+            <br />
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+
+        </form>
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+
+
+
+</body>
