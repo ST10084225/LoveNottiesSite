@@ -21,4 +21,8 @@
     <Folder Include="Models\ViewModels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\LNGI.jpg" />
+  </ItemGroup>
+
 </Project>
