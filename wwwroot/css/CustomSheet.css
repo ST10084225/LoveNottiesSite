@@ -1,0 +1,119 @@
+﻿body {
+    position:relative;
+    height: 100vh;
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+    overflow:scroll;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.coverImage {
+    object-fit: cover;
+    width: 100%;
+    height: 160px;
+}
+
+.coverImageDetails {
+    object-fit: cover;
+    width: 100%;
+    height: 450px;
+}
+
+.ImageRoundBorders {
+    --bs-card-inner-border-radius: calc(0.5rem - 1px);
+
+    border-top-left-radius: var(--bs-card-inner-border-radius);
+    border-top-right-radius: var(--bs-card-inner-border-radius);
+    border-bottom-right-radius: var(--bs-card-inner-border-radius);
+    border-bottom-left-radius: var(--bs-card-inner-border-radius);
+
+}
+
+.detailImage {
+    object-fit:scale-down;
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    display: flex; /* always present for Flexbox practices */
+    flex-direction: row; /* elements stack */
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+    .box > * {
+        flex: 1 20vw;
+        /*flex-grow: 1;*/  /*Allow the element to grow if there is available space */
+        /*flex-shrink: 1;*/  /*Elements shrink at the same rate */
+        /*flex-basis: 100%;*/ /* Elements will cover the same amount, if is possible the 100% of the width */
+        margin: 20px;
+    }
+
+
+.boxEnd {
+    display: flex; /* always present for Flexbox practices */
+    flex-direction: row; /* elements stack */
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+}
+.boxStart {
+    display: flex; /* always present for Flexbox practices */
+    flex-direction: row; /* elements stack */ 
+    flex-wrap: nowrap;
+    flex-shrink: 1;
+    flex-grow: 0;
+}
+
+    .boxStart > * {
+        flex: 1;
+        flex-grow: 0;
+        flex-shrink: 1;
+        justify-content: center;
+        /*flex-grow: 1;*/ /*Allow the element to grow if there is available space */
+        /*flex-shrink: 1;*/ /*Elements shrink at the same rate */
+        /*flex-basis: 100%;*/ /* Elements will cover the same amount, if is possible the 100% of the width */
+        margin-inline: 5px;
+    }
+
+.ProductWrapper {
+    display: flex; /* always present for Flexbox practices */
+    flex-direction: row; /* elements stack */
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 100vw /* make sure wrapper is taller enough */
+}
+
+.inner-product-wrapper > * {
+    flex: 1 1 160px;
+    /*flex-grow: 1;*/ /* Allow the element to grow if there is available space */
+    /*flex-shrink: 1;*/ /* Elements shrink at the same rate */
+    flex-basis: 100%; /* Elements will cover the same amount, if is possible the 100% of the width */
+    margin: 20px;
+}
+
+.NameWrapper {
+    display: flex; /* always present for Flexbox practices */
+    flex-direction: row; /* elements stack */
+    flex-wrap : wrap;
+    text-align:center;
+}
+
+.inner-name-wrapper {
+    flex: 1 20vw;
+    flex-grow: 1;  /*Allow the element to grow if there is available space */    
+    flex-shrink: 1;  /*Elements shrink at the same rate */
+    flex-basis: 100%;  /*Elements will cover the same amount, if is possible the 100% of the width */
+}

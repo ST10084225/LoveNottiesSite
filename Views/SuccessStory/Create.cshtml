@@ -1,0 +1,46 @@
+﻿@model LoveNottiesV2.Models.SuccessStory
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Our Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SuccessStoryTitle" class="control-label">Title</label>
+                <input asp-for="SuccessStoryTitle" class="form-control" />
+                <span asp-validation-for="SuccessStoryTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="margin-top:10px">
+                <label asp-for="SuccessStoryImageFile" class="control-label">Upload Image</label>
+                <input type="file" asp-for="SuccessStoryImageFile" accept="image/*" class="form-control" />
+                <span asp-validation-for="SuccessStoryImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SuccessStoryDescription" class="control-label">Description</label>
+                <input asp-for="SuccessStoryDescription" class="form-control" />
+                <span asp-validation-for="SuccessStoryDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

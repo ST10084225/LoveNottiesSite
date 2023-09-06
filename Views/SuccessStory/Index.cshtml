@@ -1,0 +1,45 @@
+﻿@model IEnumerable<LoveNottiesV2.Models.SuccessStory>
+@using LoveNottiesV2.Models.Repositories.Abstract;
+@using LoveNottiesV2.Models.Repositories.Implemented;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IBlobService _IblobService
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<body>
+    <div class="box">
+        @foreach (var item in Model)
+        {
+            <div class="card text-white bg-primary mb-10" style="max-width: 20rem;">
+                <div class="card-header">@Html.DisplayFor(modelItem => item.SuccessStoryTitle)</div>
+                <div class="justify-content-center">
+                    <image src="https://lovenottiesstoragetest.blob.core.windows.net/successimages/@(item.SuccessStoryID)" class="d-block user-select-none coverImage" width="10px" height="10px" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle" />
+                </div>
+                <div class="card-body">
+                    <h6 class="card-body ">@Html.DisplayFor(modelItem => item.SuccessStoryDescription)</h6>
+
+                    <div>
+                        <a class="btn btn-light text-dark" asp-controller="SuccessStory" asp-action="Details" asp-route-id="@(item.SuccessStoryID)">View</a>
+                    </div>
+
+                    <div>
+                        @if (SignInManager.IsSignedIn(User) & User.IsInRole("Manager"))
+                        {
+                            <a class="btn btn-outline-warning" asp-controller="SuccessStory" asp-action="Edit" asp-route-id="@(item.SuccessStoryID)">Edit</a>
+                            <a class="btn btn-outline-danger" asp-controller="SuccessStory" asp-action="Delete" asp-route-id="@(item.SuccessStoryID)">Delete</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
