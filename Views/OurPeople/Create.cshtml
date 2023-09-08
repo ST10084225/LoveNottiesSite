@@ -1,0 +1,58 @@
+﻿@model LoveNottiesV2.Models.OurPeople
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Our Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="OurPersonFirstName" class="control-label">First Name</label>
+                <input asp-for="OurPersonFirstName" class="form-control" />
+                <span asp-validation-for="OurPersonFirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OurPersonLastName" class="control-label">Last Name</label>
+                <input asp-for="OurPersonLastName" class="form-control" />
+                <span asp-validation-for="OurPersonLastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OurPersonTitle" class="control-label">Title</label>
+                <input asp-for="OurPersonTitle" class="form-control" />
+                <span asp-validation-for="OurPersonTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="margin-top:10px">
+                <label asp-for="OurPersonImageFile" class="control-label">Upload Image</label>
+                <input type="file" asp-for="OurPersonImageFile" accept="image/*" class="form-control" />
+                <span asp-validation-for="OurPersonImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OurPersonDescription" class="control-label">Description</label>
+                <input asp-for="OurPersonDescription" class="form-control" />
+                <span asp-validation-for="OurPersonDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

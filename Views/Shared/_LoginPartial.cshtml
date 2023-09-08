@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User) & User.IsInRole("Manager"))
+    {
+        @*<li class="nav-item">
+            <a class="btn btn-info" style="align-content:center; margin-inline: 10px;" asp-area="Identity" asp-page="/Account/RegisterEmployee">Register Employee</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-success" style="align-content:center; margin-inline: 10px;" asp-area="Identity" asp-page="/Account/RegisterVolunteer">Register Volunteer</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-warning" style="align-content:center; margin-inline: 10px;" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        </li>*@
+         <li class="nav-item">
+            <a class="btn btn-outline-warning" style="align-content:center; margin-inline: 10px;" title="Manage">Hello @User.Identity.Name!</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-warning" style="align-content:center; margin-inline: 10px;" asp-controller="Admin" asp-action="Index">Maintenance</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="btn btn-danger" style="align-content:center; margin-inline: 10px;">Logout</button>
+            </form>
+        </li>
+    }
+
+    else if (!SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="btn btn-success" style="align-content:center; margin-inline: 10px;" asp-controller="Donations" asp-action="Index">Donate</a>
+        </li>
+    }
+</ul>

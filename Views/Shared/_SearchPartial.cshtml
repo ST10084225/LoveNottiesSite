@@ -1,0 +1,53 @@
+﻿@*@model ST10084225_FarmCentral_MVC.Models.Filter
+
+<form asp-action="FarmerSearch" asp-controller="Farmers" method="post">
+
+    <input asp-for="Id" type="hidden" />
+
+    <div class="box">
+        <div class="form-group">
+            <label asp-for="StartDate" class="control-label">Start Date</label>
+            <input asp-for="StartDate" asp-format="yyyy-MM-dd" type="date" asp-format="" class="form-control" placeholder="Start Date" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EndDate" class="control-label">End Date</label>
+            <input asp-for="EndDate" asp-format="yyyy-MM-dd" type="date" class="form-control" placeholder="End Date" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Category" class="control-label"> Category </label>
+            <select asp-for="Category" class="form-select">
+                <option>Select Category</option>
+                <option>Fruit</option>
+                <option>Vegetable</option>
+                <option>Nuts</option>
+                <option>Jam</option>
+                <option>Juice</option>
+            </select>
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+        <div>
+            <div class="d-flex">
+                <input class="form-control" type="search" asp-for="SearchTerm" placeholder="Search By: Product name, Product ID">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </div>
+        </div>
+    </div>
+</form>
+*@
+
+@section Scripts
+    {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.js">
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#datepicker").datepicker({
+                format: 'dd/mm/yyyy'
+            })
+        });
+    </script>
+}

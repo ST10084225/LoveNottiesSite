@@ -1,0 +1,159 @@
+﻿@model LoveNottiesV2.Models.AdminModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+
+    .centerForAll {
+        text-align: center;
+    }
+
+    .DC-Info {
+        border-radius: 5px;
+        border: 2px solid #046737;
+        padding: 40px;
+        height: 470px;
+        background-color: #65ba91;
+    }
+
+    .DC-Staff {
+        border-radius: 5px;
+        border: 2px solid #046737;
+        padding: 10px;
+        height: 800px;
+        background-color: #65ba91;
+    }
+
+    .DC-Courses {
+        border-radius: 5px;
+        border: 2px solid #046737;
+        padding: 10px;
+        height: 426px;
+        background-color: #65ba91;
+    }
+
+    .infoTabOne {
+        text-align: center;
+        border-radius: 5px;
+        border: 2px solid #333;
+        background-color: azure;
+        padding-bottom: 40px;
+        padding-top: 40px;
+        height: 400px;
+    }
+
+    .box {
+        display: flex; /* always present for Flexbox practices */
+        flex-direction: row; /* elements stack */
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .staffPart {
+        border: 2px solid #046737;
+        height: 460px;
+        width: 50px;
+        background-color: azure;
+    }
+
+    .DC-Course-Example {
+        border: 2px solid #046737;
+        height: 300px;
+        max-width: 250px;
+        background-color: burlywood;
+        padding: 20px;
+        position: relative;
+    }
+
+    .centered-button {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        padding: 10px;
+    }
+</style>
+
+<h1>Admin Maintenance Panel</h1>
+
+  <div class="DC-Staff">
+
+      <h2>Edit Page Backgrounds</h2>
+
+        <div class="box">
+
+            <div class="staffPart">
+                <div class="box">
+                <p>Blog</p>
+        <form asp-controller="Admin" asp-action="EditBlog" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+   
+
+                    <div class="form-group" style="margin-top:10px">
+                    <label asp-for="BlogImageFile" class="control-label">Upload Image</label>
+                    <input type="file" asp-for="BlogImageFile" accept="image/*" class="form-control" />
+            <span asp-validation-for="BlogImageFile" class="text-danger"></span>
+            <div style="text-align:center;">
+                        <input type="submit" value="Change" class="btn btn-primary col-md-5" style="margin-top: 20px; text-align:center;"/>
+                        </div>
+            </div>
+
+        </form>
+
+                <div class="justify-content-center">
+                <image src="https://lovenottiesstoragetest.blob.core.windows.net/backgroundimages/BgBlog" class="d-block user-select-none coverImage ImageRoundBorders" width="10px" height="10px" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle" />
+                </div>
+            </div>
+            </div>
+
+
+
+            <div class="staffPart">
+            <div class="box">
+            <p>Our People</p>
+        <form asp-controller="Admin" asp-action="EditOP" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+   
+
+                    <div class="form-group">
+                    <label asp-for="OPImageFile" class="control-label">Upload Image</label>
+                                <input type="file" asp-for="OPImageFile" accept="image/*" class="form-control" />
+                                <span asp-validation-for="OPImageFile" class="text-danger"></span>
+                        <div style="text-align:center;">
+                            <input type="submit" value="Change" class="btn btn-primary col-md-5" style="margin-top: 20px; text-align:center;" />
+                        </div>
+                    </div>
+        </form>
+                <div class="justify-content-center">
+            <image src="https://lovenottiesstoragetest.blob.core.windows.net/backgroundimages/BgOP" class="d-block user-select-none coverImage ImageRoundBorders" width="10px" height="10px" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle" />
+            </div>
+        </div>
+            </div>
+
+            <div class="staffPart">
+            <div class="box">
+            <p>Success Stories</p>
+        <form asp-controller="Admin" asp-action="EditSS" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+   
+
+                    <div class="form-group">
+                    <label asp-for="SSImageFile" class="control-label">Upload Image</label>
+                                <input type="file" asp-for="SSImageFile" accept="image/*" class="form-control" />
+                                <span asp-validation-for="SSImageFile" class="text-danger"></span>
+                        <div style="text-align:center;">
+                            <input type="submit" value="Change" class="btn btn-primary col-md-5" style="margin-top: 20px; text-align:center;" />
+                        </div>
+            </div>
+        </form>
+
+            <div class="justify-content-center">
+                <image src="https://lovenottiesstoragetest.blob.core.windows.net/backgroundimages/BgSS" class="d-block user-select-none coverImage ImageRoundBorders" width="10px" height="10px" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle" />
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
