@@ -24,10 +24,13 @@ namespace LoveNottiesV2.Data.Migrations
                     b.Property<string>("BlogID")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("BlogDate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BlogDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BlogImage")
+                    b.Property<string>("BlogImageID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BlogTag")
@@ -55,7 +58,7 @@ namespace LoveNottiesV2.Data.Migrations
                     b.Property<string>("OurPersonFirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OurPersonImage")
+                    b.Property<string>("OurPersonImageID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OurPersonLastName")
@@ -77,7 +80,7 @@ namespace LoveNottiesV2.Data.Migrations
                     b.Property<string>("SuccessStoryDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SuccessStoryImage")
+                    b.Property<string>("SuccessStoryImageID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SuccessStoryTitle")
@@ -146,28 +149,28 @@ namespace LoveNottiesV2.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "c45a921a-0bf0-4a53-a17e-5fc1c78f2e00",
+                            ConcurrencyStamp = "6657240c-bd5c-4f59-b39d-1ae78b21c677",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "da854685-aa38-4518-8cf0-b5087976ca52",
+                            ConcurrencyStamp = "ed890465-1e6c-4287-98d4-9d376c250bee",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "54b2f243-1b42-432e-9e47-33b6e7eb66d2",
+                            ConcurrencyStamp = "6d63a861-d9ef-48cc-9225-07aa64bc34f5",
                             Name = "Volunteer",
                             NormalizedName = "VOLUNTEER"
                         },
                         new
                         {
                             Id = "4",
-                            ConcurrencyStamp = "d6f40c82-6a91-4712-99e9-bf8c3a0e3528",
+                            ConcurrencyStamp = "9af34114-b501-4cb1-82d3-0b93cf40c230",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -266,15 +269,15 @@ namespace LoveNottiesV2.Data.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ab6f4e32-b815-4af3-bacd-2224c21885e1",
+                            ConcurrencyStamp = "f30cbdd4-f388-4e2f-bd50-de340a64532f",
                             Email = "Manager1@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MANAGER1@GMAIL.COM",
                             NormalizedUserName = "MANAGER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEI+EsfYpgEkra/GIB3AzGhZJaIfHkgXS2lHXMTivz4ncYxUxNgvwBlKW7yOgjaUtBg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGL6O8UBgYeTyXmrtAvVAbRVEar1SXZeJpYcQdKoJhrn1O1ZX4K59NqLSqzkZy11Rg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f2d77ca2-bf2e-4120-b6ce-4029ab7c4044",
+                            SecurityStamp = "cc8e3d36-d9d7-4bc7-a9af-bcaba159cb13",
                             TwoFactorEnabled = false,
                             UserName = "Manager1"
                         },
@@ -282,15 +285,15 @@ namespace LoveNottiesV2.Data.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "da6e99a5-413f-4b3a-9a68-6e14c3b0769f",
+                            ConcurrencyStamp = "f589b741-776e-4918-9b85-77407d470dd8",
                             Email = "Employee1@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "EMPLOYEE1@GMAIL.COM",
                             NormalizedUserName = "EMPLOYEE1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL090ry09UETCOwMCn9uNHpc9EaiJjeD5gQNMG2N1kWQ5WvtPJFCnIc8OgTrvuzdkg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHr95RK9W+FlypCBsC96+qTKohXSvByzkNH5JGvBee11nGZL9zMQPgQdhSIc5Piy0Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bbd3a4b8-de29-46bd-b3ff-ea0e6ab69fc4",
+                            SecurityStamp = "fff0e89b-2c86-43ae-9fa1-8fa0d0018611",
                             TwoFactorEnabled = false,
                             UserName = "Employee1"
                         },
@@ -298,15 +301,15 @@ namespace LoveNottiesV2.Data.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "615db859-255d-4d3e-9e70-1901a2397d97",
+                            ConcurrencyStamp = "28de2208-e60f-4ac9-84a9-f707f4f2bf8b",
                             Email = "Volunteer1@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "VOLUNTEER1@GMAIL.COM",
                             NormalizedUserName = "VOLUNTEER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAELmGHearTqlqy9AiMVZFPmdoR0Hpez1ejld7HgyLFSExP1/Jn3Z0gPJKpc06NtX1BQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENY9Fd1z9bzJMLpq95B3xIzcwpURlRBL/PhoAJD18dQKW2x+Ll06I68wDOSrS07glA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2352c80c-e668-4af2-a5bd-00cd0bd10070",
+                            SecurityStamp = "eb03522d-61ee-4f22-92dc-b8cbc6222fc2",
                             TwoFactorEnabled = false,
                             UserName = "Volunteer1"
                         },
@@ -314,15 +317,15 @@ namespace LoveNottiesV2.Data.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8b5d1ffc-f16f-42db-ae6c-601efb64601f",
+                            ConcurrencyStamp = "cc019cb9-3925-4e03-b367-21c9569f0e9f",
                             Email = "User1@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER1@GMAIL.COM",
                             NormalizedUserName = "USER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKBOtHd/F/TEeDDwfvv/wvmbhdjY3jCNFBDJsN1qpaT0MpxrKK57j2h7T7QpUOJJcw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG8DnRKE95Z9b1EGIdsQ1NZhUMQKvQpOrfcWLAldEBLRHxRJ5cuSCMWq54D6R3C+Tg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e6d51e10-153d-42a4-8dfb-a5e7cb84b54d",
+                            SecurityStamp = "b056f5bb-70c6-4169-b888-b2f235e75149",
                             TwoFactorEnabled = false,
                             UserName = "User1"
                         });

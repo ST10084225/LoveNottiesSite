@@ -1,47 +1,71 @@
 ﻿@model IEnumerable<LoveNottiesV2.Models.SuccessStory>
+@using LoveNottiesV2.Models.Repositories.Abstract;
+@using LoveNottiesV2.Models.Repositories.Implemented;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IBlobService _IblobService
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    .parallax {
+        /* The image used */
+        background-image: url("https://lovenottiesstoragetest.blob.core.windows.net/backgroundimages/BgSS");
+        /* Set a specific height */
+        min-height: 500px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SuccessStoryTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SuccessStoryImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SuccessStoryDescription)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SuccessStoryTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SuccessStoryImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SuccessStoryDescription)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SuccessStoryID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SuccessStoryID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SuccessStoryID">Delete</a>
-            </td>
-        </tr>
+
+<h1 class="justify-content-center">Our Success Stories</h1>
+@if (SignInManager.IsSignedIn(User) & User.IsInRole("Manager"))
+{
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    </p>
 }
-    </tbody>
-</table>
+<body>
+    <div class="parallax">
+    <div class="box">
+        @foreach (var item in Model)
+        {
+            <div class="card text-white bg-primary mb-10" style="max-width: 20rem;">
+                <div class="card-header">@Html.DisplayFor(modelItem => item.SuccessStoryTitle)</div>
+                <div class="justify-content-center">
+                    <image src="https://lovenottiesstoragetest.blob.core.windows.net/successimages/@(item.SuccessStoryID)" class="d-block user-select-none coverImage" width="10px" height="10px" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle" />
+                </div>
+                <div class="card-body">
+                    <h6 class="card-body ">
+
+                        @if (item.SuccessStoryDescription.Length >= 75)
+                        {
+
+                            @(item.SuccessStoryDescription.Substring(0, 75)) <a asp-controller="SuccessStory" asp-action="Details" asp-route-id="@(item.SuccessStoryID)">...Read More</a>
+                        }
+                        else
+                        {
+                            @(item.SuccessStoryDescription) <a asp-controller="SuccessStory" asp-action="Details" asp-route-id="@(item.SuccessStoryID)">...Read More</a>
+                        }
+                    </h6>
+
+                    <div>
+                        @if (SignInManager.IsSignedIn(User) & User.IsInRole("Manager"))
+                        {
+                            <a class="btn btn-outline-warning" asp-controller="SuccessStory" asp-action="Edit" asp-route-id="@(item.SuccessStoryID)">Edit</a>
+                            <a class="btn btn-outline-danger" asp-controller="SuccessStory" asp-action="Delete" asp-route-id="@(item.SuccessStoryID)">Delete</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    </div>
+</body>

@@ -7,22 +7,29 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LoveNottiesV2.Data;
 using LoveNottiesV2.Models;
+using LoveNottiesV2.Models.Repositories.Abstract;
+using Azure.Storage.Blobs.Models;
+using System.IO;
 
 namespace LoveNottiesV2.Controllers
 {
     public class OurPeopleController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IBlobService _IBlobService;
+        private readonly IOurPeopleRepository _IOurPeopleRepository;
 
-        public OurPeopleController(ApplicationDbContext context)
+        public OurPeopleController(ApplicationDbContext context, IBlobService IBlobService, IOurPeopleRepository IOurPeopleRepository)
         {
             _context = context;
+            _IBlobService = IBlobService;
+            _IOurPeopleRepository = IOurPeopleRepository;
         }
 
         // GET: OurPeople
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OurPeoples.ToListAsync());
+            return View(_IOurPeopleRepository.GetAllOurPeople());
         }
 
         // GET: OurPeople/Details/5
@@ -54,10 +61,39 @@ namespace LoveNottiesV2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OurPersonID,OurPersonFirstName,OurPersonLastName,OurPersonTitle,OurPersonImage,OurPersonDescription")] OurPeople ourPeople)
+        public async Task<IActionResult> Create([Bind("OurPersonID,OurPersonFirstName,OurPersonLastName,OurPersonTitle,OurPersonImageID,OurPersonDescription," +
+            "OurPersonImageFile")] OurPeople ourPeople)
         {
             if (ModelState.IsValid)
             {
+                //Get the most recent OurPerson ID, and add 1
+                var ourPeopleList = await _context.OurPeoples.ToListAsync();
+                var lastPerson = ourPeopleList.LastOrDefault();
+                if (lastPerson != null)
+                {
+                    ourPeople.OurPersonID = (Convert.ToInt32(lastPerson.OurPersonID) + 1).ToString();
+                    ourPeople.OurPersonImageID = (Convert.ToInt32(lastPerson.OurPersonID) + 1).ToString();
+                }
+                else
+                {
+                    ourPeople.OurPersonID = "1";
+                    ourPeople.OurPersonImageID = "1";
+                }
+
+                byte[] fileByteArray;    //1st change here
+                if (ourPeople.OurPersonImageFile != null)
+                {
+                    using (var item = new MemoryStream())
+                    {
+                        ourPeople.OurPersonImageFile.CopyTo(item);
+                        fileByteArray = item.ToArray(); //2nd change here
+
+                        if (_IBlobService.DoesBlobExists(ourPeople.OurPersonImageID, BlobContainer.ourpeopleimages).Result == false)
+                        {
+                            await _IBlobService.UploadFileBlobAsync(fileByteArray, ourPeople.OurPersonImageID, BlobContainer.ourpeopleimages);
+                        }
+                    }
+                }
                 _context.Add(ourPeople);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -140,6 +176,13 @@ namespace LoveNottiesV2.Controllers
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var ourPeople = await _context.OurPeoples.FindAsync(id);
+
+            //find and delete the blog image
+            if (_IBlobService.DoesBlobExists(ourPeople.OurPersonImageID, BlobContainer.blogimages).Result == true)
+            {
+                await _IBlobService.DeleteFromBlob(ourPeople.OurPersonImageID, BlobContainer.blogimages);
+            }
+
             _context.OurPeoples.Remove(ourPeople);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

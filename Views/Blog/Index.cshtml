@@ -1,47 +1,67 @@
 ﻿@model IEnumerable<LoveNottiesV2.Models.BlogItem>
+@using LoveNottiesV2.Models.Repositories.Abstract;
+@using LoveNottiesV2.Models.Repositories.Implemented;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IBlobService _IblobService
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    .parallax {
+        /* The image used */
+        background-image: url("https://lovenottiesstoragetest.blob.core.windows.net/backgroundimages/BgBlog");
+        /* Set a specific height */
+        min-height: 500px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BlogImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BlogDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BlogViews)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BlogImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BlogDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BlogViews)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BlogID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BlogID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BlogID">Delete</a>
-            </td>
-        </tr>
+
+<h1 class="justify-content-center">Blogs</h1>
+@if (SignInManager.IsSignedIn(User) & User.IsInRole("Manager"))
+{
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    </p>
 }
-    </tbody>
-</table>
+<body>
+    <div class="parallax">
+<div class="box">
+@foreach (var item in Model) {
+<div class="card text-white bg-primary mb-10" style="max-width: 20rem; margin-top: 20px;">
+        <div class="card-header">@Html.DisplayFor(modelItem => item.BlogTitle)</div>
+            <div class="justify-content-center">
+                <image src="https://lovenottiesstoragetest.blob.core.windows.net/blogimages/@(item.BlogID)" class="d-block user-select-none coverImage" width="10px" height="10px" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle" />
+            </div>
+                <div class="card-body">
+                    <h6>
+                        @if (item.BlogDescription.Length >= 75)
+                        {
+
+                            @(item.BlogDescription.Substring(0, 75)) <a asp-controller="Blog" asp-action="Details" asp-route-id="@(item.BlogID)">...Read More</a>
+                        }
+                        else
+                        {
+                            @(item.BlogDescription) <a asp-controller="Blog" asp-action="Details" asp-route-id="@(item.BlogID)">...Read More</a>
+                        }
+                    </h6>
+                    @if (SignInManager.IsSignedIn(User) & User.IsInRole("Manager"))
+                    {
+                            <a class="btn btn-outline-warning" asp-controller="Blog" asp-action="Edit" asp-route-id="@(item.BlogID)">Edit</a>
+                            <a class="btn btn-outline-danger" asp-controller="Blog" asp-action="Delete" asp-route-id="@(item.BlogID)">Delete</a>
+                    }
+                </div>
+        <p class="card-footer">Views: @Html.DisplayFor(modelItem => item.BlogViews) | Posted: @Html.DisplayFor(modelItem => item.BlogDate)</p>
+</div>
+}
+</div>
+    </div>
+</body>

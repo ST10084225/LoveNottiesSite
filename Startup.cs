@@ -1,4 +1,7 @@
+using Azure.Storage.Blobs;
 using LoveNottiesV2.Data;
+using LoveNottiesV2.Models.Repositories.Abstract;
+using LoveNottiesV2.Models.Repositories.Implemented;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,7 +46,13 @@ namespace LoveNottiesV2
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-   
+            //Azure Blobs
+            services.AddScoped(x => new BlobServiceClient(Configuration.GetConnectionString("AzureStorageConnection")));
+            services.AddScoped<IBlobService, BlobService>();
+            services.AddScoped<IBlogRepository, BlogRepository>();
+            services.AddScoped<IOurPeopleRepository, OurPeopleRepository>();
+            services.AddScoped<ISuccessStoryRepository, SuccessStoryRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
